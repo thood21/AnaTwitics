@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang=“en”>
+
+			<!-- BEGIN PAGE HEAD -->
+<head>
+			<!-- META TAGS AND TITLE -->
+	<meta charset="utf-8">
+	<title>AnaTwitics - Latest Trends on Twitter</title>
+			<!-- IMPORT CSS FILES FROM LOCAL AND ONLINE HOSTS -->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+			<!-- CUSTOM STYLE FOR THIS HTML PAGE -->
+	<style>
+		body {
+			font-family: Ubuntu;
+			background-color: #2B2B2B;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			color: whitesmoke;
+		}
+	/* TOP NAVIGATION BAR - GREEN BAR AT TOP OF PAGE  */
+
+		.topnav {
+   			background-color: #5CDB95;
+			overflow: hidden;
+			width: 100%;
+			height: 60px;
+			padding-top: 15px;
+		}
+
+	/* MAIN HEADING FORMAT */
+
+		.mainheading {
+			text-align: left;
+			font-size: 48px;
+			margin-left: 5%;
+		}
+
+		.subheading {
+		font-size: 1em;
+		margin-left: 4%;
+		}
+
+	/*TIME RANGE SELECTOR AT THE TOP OF THE PAGE */
+		.timerange {
+			float: right;
+			margin-top: 0%;
+			margin-right: 45%;
+		}
+
+		.timerangetext {
+			float: right;
+			margin-top: 0%;
+		}
+
+	/* SEARCHBAR AT THE TOP OF THE PAGE */
+
+		.topnav input[type=text] {
+    			float: right;
+    			border-style: inset;
+    			font-size: 17px;
+				margin-top: -3%;
+		}
+
+	/* SEARCH BUTTON AND SVG ICON */
+		#search-button {
+			float: right;
+ 			width: 50px;
+  			height: 28px;
+			margin-right: 41.2%;
+			margin-top: -3%;
+			background-color: whitesmoke;
+		}
+    
+		#search-button svg {
+  			width: 25px;
+  			height: 25px;
+		}
+
+		.chartarea {
+			max-width: 55%;
+			margin-left: 25%;
+		}
+	</style>
+
+			<!-- CUSTOM SCRIPTS FOR THIS PAGE -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>		
+
+</head>
+<body>
+	<div class="topnav" style="height: 25%;">
+		<div>
+			<a href="main.html" style = "text-decoration: none; color: whitesmoke;"><h1>AnaTwitics</h1></a>
+			<span class="subheading">Discover What's Trending on Twitter!</span>
+		</div>
+	</div>
+			
+			<!--THIS IS THE ACTUAL CHART INFORMATION AND SCRIPT TO CREATE IT ON THE WEBPAGE -->
+	<div class="chartarea" style="background-color: #343A40;">
+		<canvas id="chart" width="500" height="450"></canvas>	
+	</div>
+		<script type="text/javascript">
+			new Chart(document.getElementById("chart"), {
+  			type: 'bar',
+  			data: {
+        labels: ["NFL", "Fellaini", "Spongebob", "GivingTuesday","Chuck Schumer", "Lyon"],
+        datasets: [{
+            label: '# of Votes in Thousands (K)',
+            data: [52.6, 58.2, 483, 13.1, 23.8, 64.5],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+		</script>
+</body>
+</html>

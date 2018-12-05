@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang=“en”>
+
+			<!-- BEGIN PAGE HEAD -->
+<head>
+			<!-- META TAGS AND TITLE -->
+	<meta charset="utf-8">
+	<title>AnaTwitics - See What’s Trending on Twitter!</title>
+			<!-- IMPORT CSS FILES FROM LOCAL AND ONLINE HOSTS -->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+			<!-- CUSTOM STYLE FOR THIS HTML PAGE -->
+	<style>
+		html {
+   			margin: 0px;
+   			height: 100%;
+   			width: 100%;
+			overflow: hidden;
+		}
+		body{
+		/* Use "linear-gradient" to add a darken background effect to the image*/
+    		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1530698060343-ae5da1a26d7f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a55e58a94cca96622cfaad3219c4c484&auto=format&fit=crop&w=2100&q=80");
+			background-size: 100%, 100%;
+			max-width: 100%;
+			margin: 0px;
+			overflow-y:scroll;
+		}
+		
+		.topnav{
+			width: 100%;
+			height: 30%;
+			font-family: Ubuntu;
+			font-size: 1em;
+			color: whitesmoke;
+			position: fixed;
+		}
+		
+		.topnav a:hover {
+			color: #5CDB95;
+		}
+
+		a {
+			color: whitesmoke;
+			text-decoration: none;
+		}
+
+		@import url(https://fonts.googleapis.com/css?family=Lato:900);
+		*, *:before, *:after{
+  			box-sizing:border-box;
+		}
+		div.openTypeText{
+  			width: 30%;
+  			margin: 0 auto;
+  			text-align: left;
+		}
+		.letter{
+  			display: inline-block;
+  			font-weight: 900;
+  			font-size: 2.5em;
+  			margin: 0em;
+  			position: relative;
+  			color: #5CDB95;
+  			transform-style: preserve-3d;
+  			perspective: 400;
+  			z-index: 1;
+		}
+		.letter:before, .letter:after{
+ 			 position:absolute;
+ 			 content: attr(data-letter);
+  			transform-origin: top left;
+  			top:0;
+  			left:0;
+		}
+		.letter, .letter:before, .letter:after{
+  			transition: all 0.01s ease-in-out;
+		}
+		.letter:before{
+ 			 color: #fff;
+  			text-shadow: 
+    			-1px 0px 1px rgba(255,255,255,.8),
+    			1px 0px 1px rgba(0,0,0,.8);
+  			z-index: 3;
+  			transform:
+    			rotateX(0deg)
+    			rotateY(-15deg)
+    			rotateZ(0deg);
+		}
+		.letter:after{
+  			color: rgba(0,0,0,.11);
+  			z-index:2;
+  			transform:
+   			 scale(1.08,1)
+    			rotateX(0deg)
+    			rotateY(0deg)
+    			rotateZ(0deg)
+    			skew(0deg,1deg);
+		}
+		.letter:hover:before{
+  			color: #fafafa;
+  			transform:
+    			rotateX(0deg)
+    			rotateY(-40deg)
+    			rotateZ(0deg);
+		}
+		.letter:hover:after{
+  			transform:
+    			scale(1.08,1)
+    			rotateX(0deg)
+    			rotateY(40deg)
+    			rotateZ(0deg)
+    			skew(0deg,22deg);
+		}
+		
+		.hero-text{
+			text-align: center;
+			font-family: Ubuntu;
+			color: whitesmoke;
+			font-size: 3em;
+			position: absolute;
+			top: 35%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.hero-text span:hover {
+			color: #5CDB95;
+		}
+		
+		.top-section {
+			height: 100vh;
+			width: 100%;
+			display: table;
+			max-width: 100%;
+		}
+		.bottom-section {
+			height: 10vh;
+			width: 100%;
+			max-width: 100%;
+			display: table;
+			background-color:#5CDB95;
+			font-family: Ubuntu;
+			color: whitesmoke;
+			font-size: 1.5em;
+		}
+
+		.footer {
+			width: 10%;
+			margin-left: 42.5%;
+			bottom: 0;
+			position: fixed;
+		}
+		.footer a {
+			margin-left: 50%;
+			font-family: Ubuntu;
+			font-size: 3em;
+			color: #5CDB95;
+			display: inline-block;
+		}
+
+	</style>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script type = "text/javascript">
+	var i=1;
+	var j=1;
+	onload = function() {
+	
+		function changeItems() {
+			var BackgroundImg = ["https://images.unsplash.com/photo-1530698060343-ae5da1a26d7f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a55e58a94cca96622cfaad3219c4c484&auto=format&fit=crop&w=2100&q=80",
+		"https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=07bcd69444b1da123c309e5f4485371b&auto=format&fit=crop&w=2100&q=80",
+		"https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8e944238c781ac3db785b574f331d047&auto=format&fit=crop&w=2102&q=80", 
+		"https://images.unsplash.com/photo-1493401415972-d4001c9fa2aa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2f01b2eee4be64a5075085c2b510e820&auto=format&fit=crop&w=1950&q=80"
+		];
+			var HeroText = ["Discover What's New",
+				"Track Your Brand",
+				"Create the Latest Trends",
+				"Stay Connected"
+				]; 
+				
+		var body = document.getElementsByTagName('body')[0];
+		body.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("' + BackgroundImg[i] + '")';
+
+		var text = document.getElementById('ht');
+		text.textContent = HeroText[j];
+
+		i++;
+		j++;
+
+		if(i>=4){
+		i=0;
+		}
+		
+		if(j>=4){
+		j=0;
+		}
+	}
+
+		window.setInterval(changeItems, 4000);
+	}
+	</script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script>
+	$(document).ready(function(){
+  	// Add smooth scrolling to all links
+  	$("a").on('click', function(event) {
+
+    	// Make sure this.hash has a value before overriding default behavior
+    	if (this.hash !== "") {
+      	// Prevent default anchor click behavior
+      	event.preventDefault();
+
+      	// Store hash
+      	var hash = this.hash;
+
+      	// Using jQuery's animate() method to add smooth page scroll
+      	// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      	$('html, body').animate({
+        	scrollTop: $(hash).offset().top
+      	}, 800, function(){
+   
+        	// Add hash (#) to URL when done scrolling (default click behavior)
+        	window.location.hash = hash;
+      	});
+    	} // End if
+  	});
+	});
+	</script>
+		
+	<script>
+		var count = 0;
+		function RotateArrow() {
+		if(count%2==0)
+		{
+  			var arrow = document.getElementById("arrow");
+			arrow.style.color = "whitesmoke";
+			arrow.style.webkitTransform = "rotate(180deg)";
+			arrow.setAttribute("href", "#Bottom");
+			var nav = document.getElementById("nav");
+			nav.style.display = "none";
+			count++;
+		}
+		else
+		{
+			var arrow = document.getElementById("arrow");
+			arrow.style.color = "#5CDB95";
+			arrow.style.webkitTransform = "rotate(360deg)";
+			arrow.setAttribute("href", "#Top");
+			var nav = document.getElementById("nav");
+			nav.style.display = "block";
+			count++;
+		}
+		}
+	</script>
+	
+</head>
+<body>
+	<section class="top-section" id="Top">
+	<div class="topnav" id="nav">
+		<div class="openTypeText" style="margin-left: 3%; margin-top: 0%;">
+  			<span class="letter" data-letter="A">A</span>
+  			<span class="letter" data-letter="N">N</span>
+			<span class="letter" data-letter="A">A</span>
+			<span class="letter" data-letter="T">T</span>
+			<span class="letter" data-letter="W">W</span>
+			<span class="letter" data-letter="I">I</span>
+			<span class="letter" data-letter="T">T</span>
+			<span class="letter" data-letter="I">I</span>
+			<span class="letter" data-letter="C">C</span>
+			<span class="letter" data-letter="S">S</span>
+	 	</div>
+	</div>
+	<div class="footer">
+			<a id="arrow" href="#Bottom" onclick="RotateArrow()"><i class="fa fa-chevron-circle-down"></i></a>
+	</div>
+	<div class="hero-text">
+		<span id="ht">Discover What's New</span>
+	</div>
+	</section>
+	<section class="bottom-section" id="Bottom">
+		<form action="search.php" method="POST">
+		<div style="margin-top:2%;">
+			<a href="trending.html" style="margin-left: 15%;">Trending #Hashtags on Twitter</a>
+			<input type="SUBMIT"  type = "SUBMIT" value = "Find a Specific #Hashtag" 
+			style="border: none; margin-left: 25%; background-color:#5CDB95;font-family:Ubuntu;font-size: 1.1em;color:whitesmoke;cursor:pointer;">
+		</div>
+		</form>
+	</section>
+</body>
+</html>
